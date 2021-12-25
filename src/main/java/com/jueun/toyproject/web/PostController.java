@@ -9,18 +9,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
-@RequestMapping("/post")
-@Controller
+@RestController
 public class PostController {
 
     private final PostService postService;
 
-    @PostMapping("/")
-    public Long postSave(PostRequestDto requestDto){
+    @PostMapping("/post")
+    public Long postSave(@RequestBody PostRequestDto requestDto){
         return postService.save(requestDto);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/post/{id}")
     public Long update(@PathVariable Long id, @RequestBody PostUpdateRequestDto requestDto) {
         return postService.update(id, requestDto);
     }
