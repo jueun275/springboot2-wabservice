@@ -1,5 +1,6 @@
 package com.jueun.toyproject.web;
 
+import com.jueun.toyproject.config.auth.LoginUser;
 import com.jueun.toyproject.config.auth.dto.SessionUser;
 import com.jueun.toyproject.service.PostService;
 import com.jueun.toyproject.web.dto.PostResponseDto;
@@ -19,9 +20,8 @@ public class IndexController {
     private final HttpSession httpSession;
 
     @GetMapping("/")
-    public String index(Model model) {
+    public String index(Model model, @LoginUser SessionUser user) {
         model.addAttribute("post", postService.findAllDesc());
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
 
         if(user != null){
             model.addAttribute("userName", user.getName());
