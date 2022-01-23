@@ -15,6 +15,9 @@ cache:
 
 script: './gradlew -x clean build'
 
+before_install:
+  - chmod +x gradlew
+
 before_deploy:
   - zip -r springboot2-webservice *
   - mkdir -p deploy
