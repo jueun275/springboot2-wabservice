@@ -13,6 +13,6 @@ permissions:
 
 hooks:
   ApplicationStart:
-    - location: health.sh
+    - location: deploy.sh
       timeout: 60
       runas: ec2-user
