@@ -5,16 +5,17 @@ import com.jueun.toyproject.domain.posts.Post;
 import com.jueun.toyproject.domain.posts.PostRepository;
 import com.jueun.toyproject.web.dto.PostRequestDto;
 import com.jueun.toyproject.web.dto.PostUpdateRequestDto;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.*;
 import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -30,7 +31,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class PostControllerTest {
 
@@ -48,7 +49,7 @@ public class PostControllerTest {
 
     private MockMvc mvc;
 
-    @Before
+   @BeforeEach
     public void setup() {
         mvc = MockMvcBuilders
                 .webAppContextSetup(context)
@@ -56,7 +57,7 @@ public class PostControllerTest {
                 .build();
     }
 
-    @After
+    @AfterEach
     public void tearDown() throws Exception{
         postRepository.deleteAll();
     }

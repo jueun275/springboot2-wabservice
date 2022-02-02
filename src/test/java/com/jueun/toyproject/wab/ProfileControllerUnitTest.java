@@ -1,7 +1,7 @@
 package com.jueun.toyproject.wab;
 
 import com.jueun.toyproject.web.ProfileController;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.mock.env.MockEnvironment;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
